@@ -1,0 +1,107 @@
+2019-09-25 15:10:08.062  INFO 14128 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 14128 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:10:08.063 DEBUG 14128 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:10:08.063  INFO 14128 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:10:09.480  INFO 14128 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:10:10.527  INFO 14128 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:10:10.529  INFO 14128 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:10:10.530  INFO 14128 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:10:10.530  INFO 14128 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:10:10.554  INFO 14128 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 2.902 seconds (JVM running for 3.938)
+2019-09-25 15:10:10.762  INFO 14128 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:12:02.703  INFO 21616 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 21616 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:12:02.704 DEBUG 21616 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:12:02.705  INFO 21616 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:12:04.169  INFO 21616 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:12:05.175  INFO 21616 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:12:05.175  INFO 21616 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:12:05.175  INFO 21616 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:12:05.175  INFO 21616 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:12:05.200  INFO 21616 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 2.873 seconds (JVM running for 3.946)
+2019-09-25 15:12:05.409  INFO 21616 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:20:08.979  INFO 21928 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 21928 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:20:08.981 DEBUG 21928 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:20:08.982  INFO 21928 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:20:10.441  INFO 21928 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:20:11.254  INFO 21928 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:20:11.255  INFO 21928 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:20:11.255  INFO 21928 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:20:11.255  INFO 21928 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:20:11.275  INFO 21928 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 2.734 seconds (JVM running for 3.436)
+2019-09-25 15:20:11.437  INFO 21928 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:21:00.500  INFO 14036 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 14036 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:21:00.502 DEBUG 14036 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:21:00.503  INFO 14036 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:21:01.836  INFO 14036 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:21:02.634  INFO 14036 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:21:02.635  INFO 14036 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:21:02.636  INFO 14036 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:21:02.636  INFO 14036 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:21:02.653  INFO 14036 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 2.617 seconds (JVM running for 3.311)
+2019-09-25 15:21:02.830  INFO 14036 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:23:33.840  INFO 9232 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 9232 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:23:33.841 DEBUG 9232 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:23:33.841  INFO 9232 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:23:35.348  INFO 9232 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:23:36.577  INFO 9232 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:23:36.578  INFO 9232 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:23:36.579  INFO 9232 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:23:36.579  INFO 9232 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:23:36.608  INFO 9232 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 3.133 seconds (JVM running for 4.402)
+2019-09-25 15:23:36.817  INFO 9232 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:36:43.687  INFO 9148 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 9148 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:36:43.688 DEBUG 9148 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:36:43.688  INFO 9148 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:36:45.231  INFO 9148 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:36:46.213  INFO 9148 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:36:46.214  INFO 9148 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:36:46.215  INFO 9148 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:36:46.215  INFO 9148 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:36:46.241  INFO 9148 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 2.91 seconds (JVM running for 4.009)
+2019-09-25 15:36:46.517  INFO 9148 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-25 15:36:46.784  INFO 9148 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-25 15:36:46.792 DEBUG 9148 --- [main] c.c.springBoot.dao.AmountPoolDao.select  : ==>  Preparing: SELECT id,original_amount,amount,used_amount,status,create_time,update_time FROM amount_pool WHERE status = ? 
+2019-09-25 15:36:46.819 DEBUG 9148 --- [main] c.c.springBoot.dao.AmountPoolDao.select  : ==> Parameters: 0(Integer)
+2019-09-25 15:36:46.866 DEBUG 9148 --- [main] c.c.springBoot.dao.AmountPoolDao.select  : <==      Total: 11
+2019-09-25 15:36:46.985  INFO 9148 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:36:46.985  INFO 9148 --- [Thread-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-25 15:36:47.042  INFO 9148 --- [Thread-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-25 15:37:22.368  INFO 9472 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 9472 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:37:22.369 DEBUG 9472 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:37:22.370  INFO 9472 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:37:23.859  INFO 9472 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:37:24.855  INFO 9472 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:37:24.856  INFO 9472 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:37:24.856  INFO 9472 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:37:24.857  INFO 9472 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:37:24.879  INFO 9472 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 2.809 seconds (JVM running for 3.93)
+2019-09-25 15:37:25.075  INFO 9472 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:38:30.470  INFO 8664 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 8664 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:38:30.471 DEBUG 8664 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:38:30.471  INFO 8664 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:38:31.911  INFO 8664 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:38:33.055  INFO 8664 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:38:33.056  INFO 8664 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:38:33.057  INFO 8664 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:38:33.057  INFO 8664 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:38:33.086  INFO 8664 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 2.928 seconds (JVM running for 4.041)
+2019-09-25 15:38:33.337  INFO 8664 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:40:09.112  INFO 4432 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 4432 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:40:09.113 DEBUG 4432 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:40:09.114  INFO 4432 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:40:10.536  INFO 4432 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:40:11.611  INFO 4432 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:40:11.612  INFO 4432 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:40:11.613  INFO 4432 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:40:11.613  INFO 4432 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:40:11.640  INFO 4432 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 2.837 seconds (JVM running for 3.984)
+2019-09-25 15:40:24.105  INFO 4432 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'
+2019-09-25 15:50:13.635  INFO 19468 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Starting AmountPoolServiceImplTest on PC-201901071417 with PID 19468 (started by Administrator in E:\myGeneration\springBoot)
+2019-09-25 15:50:13.635 DEBUG 19468 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-25 15:50:13.636  INFO 19468 --- [main] c.c.s.a.AmountPoolServiceImplTest        : No active profile set, falling back to default profiles: default
+2019-09-25 15:50:15.149  INFO 19468 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'taskExecutor'
+2019-09-25 15:50:16.227  INFO 19468 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2019-09-25 15:50:16.228  INFO 19468 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2019-09-25 15:50:16.230  INFO 19468 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2019-09-25 15:50:16.230  INFO 19468 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2019-09-25 15:50:16.256  INFO 19468 --- [main] c.c.s.a.AmountPoolServiceImplTest        : Started AmountPoolServiceImplTest in 3.002 seconds (JVM running for 4.056)
+2019-09-25 15:50:20.665  INFO 19468 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'taskExecutor'

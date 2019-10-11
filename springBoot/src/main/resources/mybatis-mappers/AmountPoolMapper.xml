@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caideli.springBoot.dao.AmountPoolDao">
+
+    <update id="userUpdateAmount">
+        update amount_pool
+        set amount = amount - #{changeAmount},
+            used_amount = used_amount + #{changeAmount}
+        where
+          id = #{id}
+          and amount + #{changeAmount} &gt;= #{riskAmount}
+    </update>
+
+    <update id="backendUpdateAmount">
+        update amount_pool
+        set original_amount = amount + #{changeAmount},
+            amount = amount + #{changeAmount}
+        where
+            id = #{id}
+    </update>
+
+</mapper>
