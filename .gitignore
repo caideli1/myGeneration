@@ -1,0 +1,10 @@
+﻿/.settings/
+/.project
+/.idea/
+/*.iml
+/logs/
+/.mvn/wrapper/
+**/*.iml
+将删除 .factorypath
+将删除 order-center/src/main/java/com/cloud/product/
+/order-center/order-center.iml
