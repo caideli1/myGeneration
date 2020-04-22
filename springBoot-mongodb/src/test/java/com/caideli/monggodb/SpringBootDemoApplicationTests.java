@@ -1,4 +1,4 @@
-package com.caideli.springBootDemo;
+package com.caideli.monggodb;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

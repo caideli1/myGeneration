@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.caideli</groupId>
-	<artifactId>springBootDemo</artifactId>
+	<artifactId>springBoot-mongodb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springBootDemo</name>
+	<name>springBoot-mongodb</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
