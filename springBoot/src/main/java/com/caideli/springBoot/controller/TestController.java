@@ -3,18 +3,12 @@ package com.caideli.springBoot.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.caideli.springBoot.base.JsonResult;
 import com.caideli.springBoot.config.idconfig.SnowflakeIdWorker;
-import com.caideli.springBoot.model.elasticsearch.RiskAddressBook;
 import com.caideli.springBoot.service.AmountPoolService;
-import com.caideli.springBoot.service.elasticsearch.RiskAddressBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -29,10 +23,6 @@ public class TestController {
     private AmountPoolService amountPoolService;
     @Autowired
     private ThreadPoolExecutor threadPoolExecutor;
-    @Autowired
-    private RiskAddressBookRepository addressBookRepository;
-    @Autowired
-    private SnowflakeIdWorker snowflakeIdWorker;
 
     @RequestMapping("/")
     public String home() {
@@ -53,33 +43,6 @@ public class TestController {
             threadPoolExecutor.execute(userThreadConsumer);
         }
         return JsonResult.ok();
-    }
-
-    @RequestMapping("/esSave")
-    public JsonResult esSave() {
-        List<RiskAddressBook> riskAddressBookList = new ArrayList<>();
-        for (int i=1;i<=12;i++){
-            RiskAddressBook riskAddressBook = new RiskAddressBook();
-            riskAddressBook.setId(snowflakeIdWorker.nextId());
-            riskAddressBook.setOrderNo(Long.parseLong(String.valueOf(i%3)));
-            riskAddressBook.setRegion("");
-            riskAddressBook.setLastContactTime(null);
-            riskAddressBook.setRelation(0L);
-            riskAddressBook.setContactCount(0L);
-            riskAddressBook.setPhone(i+i+"");
-            riskAddressBook.setName("我是第"+i+"名字");
-            riskAddressBook.setRepeatCount(0L);
-            riskAddressBook.setCreateTime(new Date());
-            riskAddressBook.setUpdateTime(new Date());
-            riskAddressBookList.add(riskAddressBook);
-        }
-
-        return JsonResult.ok(addressBookRepository.saveAll(riskAddressBookList));
-    }
-
-    @RequestMapping("/esSelect")
-    public JsonResult esSelect() {
-        return JsonResult.ok(addressBookRepository.findAllByOrderNo(1L, PageRequest.of(0,1000)));
     }
 
 
