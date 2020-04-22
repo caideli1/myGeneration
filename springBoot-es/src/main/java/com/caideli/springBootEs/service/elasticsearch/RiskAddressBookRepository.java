@@ -1,8 +1,8 @@
-package com.caideli.springBoot.service.elasticsearch;
+package com.caideli.springBootEs.service.elasticsearch;
 
 
-import com.caideli.springBoot.model.elasticsearch.RiskAddressBook;
 import org.springframework.data.domain.Pageable;
+import com.caideli.springBootEs.model.elasticsearch.RiskAddressBook;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;
@@ -12,8 +12,9 @@ import java.util.List;
  * @author walle
  */
 public interface RiskAddressBookRepository extends ElasticsearchRepository<RiskAddressBook, Long> {
-    List<RiskAddressBook> findAllByOrderNo(Long orderNo, Pageable pageable);
-    List<RiskAddressBook> findAllByPhone(String phone, Pageable pageable);
 
+    List<RiskAddressBook> findAllByOrderNo(Long orderNo, Pageable pageable);
+
+    List<RiskAddressBook> findAllByPhone(String phone, Pageable pageable);
 
 }

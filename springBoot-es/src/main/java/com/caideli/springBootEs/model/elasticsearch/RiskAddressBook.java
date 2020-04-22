@@ -1,4 +1,4 @@
-package com.caideli.springBoot.model.elasticsearch;
+package com.caideli.springBootEs.model.elasticsearch;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
