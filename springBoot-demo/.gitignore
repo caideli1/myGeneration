@@ -1,0 +1,10 @@
+/.settings/
+/.project
+/.idea/
+/*.iml
+/logs/
+**/*.iml
+**/target/
+/resources/
+/.gitignore
+bootstrap.yml
