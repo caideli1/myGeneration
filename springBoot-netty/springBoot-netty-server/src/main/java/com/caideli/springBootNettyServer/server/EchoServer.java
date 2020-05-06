@@ -44,8 +44,7 @@ public class EchoServer {
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
     private Channel channel;
 
-    @Autowired
-    private EchoServerHandler echoServerHandler;
+    //private ChannelInboundHandlerAdapter serverHandler;
     /**
      * 启动服务
      * @param hostname
@@ -53,8 +52,7 @@ public class EchoServer {
      * @return
      * @throws Exception
      */
-    public ChannelFuture start(String hostname, int port) throws Exception {
-
+    public ChannelFuture start(String hostname, int port,ChannelInboundHandlerAdapter serverHandler) throws Exception {
         //final EchoServerHandler echoServerHandler = new EchoServerHandler();
         ChannelFuture f = null;
         try {
@@ -67,7 +65,7 @@ public class EchoServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
 //                            为监听客户端read/write事件的Channel添加用户自定义的ChannelHandler
-                            socketChannel.pipeline().addLast(echoServerHandler);
+                            socketChannel.pipeline().addLast(serverHandler);
                         }
                     });
 
@@ -79,6 +77,7 @@ public class EchoServer {
         } finally {
             if (f != null && f.isSuccess()) {
                 log.info("Netty server listening " + hostname + " on port " + port + " and ready for connections...");
+                log.info("Netty server handler name is "+serverHandler.getClass().getSimpleName());
             } else {
                 log.error("Netty server start up Error!");
             }
@@ -97,6 +96,14 @@ public class EchoServer {
         log.info("Shutdown Netty Server Success!");
     }
 
+
+    /**
+     * 拷贝的xxl_job的内容
+     * @param hostname
+     * @param port
+     * @return
+     * @throws Exception
+     */
     public ChannelFuture start_netty_http_server(String hostname, int port) throws Exception {
 
         EventLoopGroup bossGroup = new NioEventLoopGroup();

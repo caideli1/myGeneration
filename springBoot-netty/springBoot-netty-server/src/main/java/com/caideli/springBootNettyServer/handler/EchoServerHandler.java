@@ -2,10 +2,7 @@ package com.caideli.springBootNettyServer.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.*;
 import io.netty.util.CharsetUtil;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +22,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     /**
      * 对每一个传入的消息都要调用；
+     * 读取并且返回应答消息
      * @param ctx
      * @param msg
      * @throws Exception
@@ -37,6 +35,8 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         channelMap.put(in.toString(CharsetUtil.UTF_8),ctx.channel());
 
         ctx.write(Unpooled.copiedBuffer("我是server端发送消息过来了!", CharsetUtil.UTF_8));
+        //ctx.write(Object) 方法不会使消息写入到通道上，他被缓冲在了内部，你需要调用 ctx.flush() 方法来把缓冲区中数据强行输出。或者你可以用更简洁的 cxt.writeAndFlush(msg) 以达到同样的目的。
+        ctx.flush();
     }
 
     /**

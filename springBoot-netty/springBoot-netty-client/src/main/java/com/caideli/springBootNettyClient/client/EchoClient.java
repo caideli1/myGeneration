@@ -1,13 +1,13 @@
 package com.caideli.springBootNettyClient.client;
 
-import com.caideli.springBootNettyClient.handler.EchoClientHandler;
+import com.caideli.springBootNettyClient.decoder.TimeDecoder;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
 
@@ -24,34 +24,21 @@ import java.net.InetSocketAddress;
  * 3.当连接被建立时，一个EchoClientHandler实例会被安装到（该Channel的一个ChannelPipeline中；
  * 4.在一切都设置完成后，调用Bootstrap.connect()方法连接到远程节点。
  */
+@Slf4j
+@Component
 public class EchoClient {
-    private final String host;
-    private final int port;
 
+    private final EventLoopGroup group = new NioEventLoopGroup();
+    private Channel channel;
 
-    public EchoClient(String host, int port) {
-        this.host = host;
-        this.port = port;
-    }
-
-
-    /**
-     * 运行流程：
-     * @param args
-     * @throws Exception
-     */
-    public static void main(String[] args) throws Exception {
-        new EchoClient("127.0.0.1",8894).start();
-    }
-
-    private void start() throws Exception {
+    public ChannelFuture start(String host, int port,ChannelInboundHandlerAdapter clientHandler) throws Exception {
 
         /**
          * Netty用于接收客户端请求的线程池职责如下。
          * （1）接收客户端TCP连接，初始化Channel参数；
          * （2）将链路状态变更事件通知给ChannelPipeline
          */
-        EventLoopGroup group = new NioEventLoopGroup();
+        ChannelFuture f = null;
         try {
             Bootstrap b = new Bootstrap();
             b.group(group)
@@ -60,15 +47,35 @@ public class EchoClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(new EchoClientHandler());
+                            socketChannel.pipeline().addLast(clientHandler);
+                            //基于流的传输方法，平均拆分，累计缓冲的方式
+                            //socketChannel.pipeline().addLast(new TimeDecoder(),clientHandler);
                         }
                     });
             //绑定端口
-            ChannelFuture f = b.connect().sync();
-
-            f.channel().closeFuture().sync();
+            f = b.connect().sync();
+            channel = f.channel();
+            //f.channel().closeFuture().sync();
         } catch (Exception e) {
-            group.shutdownGracefully().sync();
+            e.printStackTrace();
+        }finally {
+            if (f != null && f.isSuccess()) {
+                log.info("Netty client listening " + host + " on port " + port + " and ready for send");
+                log.info("Netty server handler name is "+clientHandler.getClass().getSimpleName());
+            } else {
+                log.error("Netty client start up Error!");
+            }
         }
+        return f;
+    }
+
+    /**
+     * 停止服务
+     */
+    public void destroy() {
+        log.info("Shutdown Netty Client...");
+        if(channel != null) { channel.close();}
+        group.shutdownGracefully();
+        log.info("Shutdown Netty Client Success!");
     }
 }

@@ -1,5 +1,7 @@
 package com.caideli.springBootNettyServer;
 
+import com.caideli.springBootNettyServer.handler.EchoServerHandler;
+import com.caideli.springBootNettyServer.handler.EchoTimeServerHandler;
 import com.caideli.springBootNettyServer.server.EchoServer;
 import io.netty.channel.ChannelFuture;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +22,24 @@ public class SpringBootNettyServerApplication implements CommandLineRunner {
 	@Autowired
 	private EchoServer echoServer;
 
+	@Autowired
+	private EchoServerHandler echoServerHandler;
+
+	@Autowired
+	private EchoTimeServerHandler echoTimeServerHandler;
+//	@Autowired
+//	private EchoServer echoServer;
+//	@Autowired
+//	private EchoServer echoServer;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootNettyServerApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		ChannelFuture future = echoServer.start(url,port);
+
+		ChannelFuture future = echoServer.start(url,port,echoTimeServerHandler);
 		Runtime.getRuntime().addShutdownHook(new Thread(){
 			@Override
 			public void run() {

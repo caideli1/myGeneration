@@ -5,6 +5,8 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author : caideli
@@ -12,6 +14,8 @@ import io.netty.util.CharsetUtil;
  * @Date : 2020/4/29 19:38
  * 描述：
  */
+@Slf4j
+@Component
 public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     /**
@@ -22,6 +26,10 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.writeAndFlush(Unpooled.copiedBuffer("我是client端发送消息过来了!", CharsetUtil.UTF_8));
+    }
+
+    public void sendServerMsg(ChannelHandlerContext ctx) throws Exception {
+        ctx.writeAndFlush(Unpooled.copiedBuffer("客户端第二次发送", CharsetUtil.UTF_8));
     }
 
     /**
