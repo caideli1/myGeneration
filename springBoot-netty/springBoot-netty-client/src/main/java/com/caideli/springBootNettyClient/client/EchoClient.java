@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 
 /**
@@ -72,7 +74,10 @@ public class EchoClient {
         //绑定端口
         ChannelFuture f = b.connect(host,port).sync();
         channel = f.channel();
-        return  f;
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        while(true){
+            channel.writeAndFlush(in.readLine() + "\r\n");
+        }
     }
 
     /**
