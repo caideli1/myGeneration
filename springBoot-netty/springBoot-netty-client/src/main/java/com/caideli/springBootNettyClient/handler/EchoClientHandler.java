@@ -28,10 +28,6 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
         ctx.writeAndFlush(Unpooled.copiedBuffer("我是client端发送消息过来了!", CharsetUtil.UTF_8));
     }
 
-    public void sendServerMsg(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("客户端第二次发送", CharsetUtil.UTF_8));
-    }
-
     /**
      * 当从服务器接收到一个消息时被调用
      * @param channelHandlerContext
