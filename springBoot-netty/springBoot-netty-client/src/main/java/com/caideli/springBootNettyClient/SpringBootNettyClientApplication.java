@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.caideli.springBootNettyClient","com.caideli.springBootCommon"})
+@EnableConfigurationProperties
 public class SpringBootNettyClientApplication implements CommandLineRunner {
 
 	@Value("${netty.server.port}")
@@ -34,7 +36,7 @@ public class SpringBootNettyClientApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ChannelFuture future = echoClient.start(url,port,echoTimeClientHandler);
+		echoClient.start(url,port,echoClientHandler);
 		Runtime.getRuntime().addShutdownHook(new Thread(){
 			@Override
 			public void run() {
@@ -42,6 +44,6 @@ public class SpringBootNettyClientApplication implements CommandLineRunner {
 			}
 		});
 		//服务端管道关闭的监听器并同步阻塞,直到channel关闭,线程才会往下执行,结束进程
-		future.channel().closeFuture().syncUninterruptibly();
+//		future.channel().closeFuture().syncUninterruptibly();
 	}
 }

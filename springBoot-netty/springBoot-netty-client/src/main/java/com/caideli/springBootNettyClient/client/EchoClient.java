@@ -1,14 +1,20 @@
 package com.caideli.springBootNettyClient.client;
 
 import com.caideli.springBootNettyClient.decoder.TimeDecoder;
+import com.caideli.springBootNettyClient.initializer.SimpleChatClientInitializer;
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 
 /**
@@ -28,21 +34,25 @@ import java.net.InetSocketAddress;
 @Component
 public class EchoClient {
 
-    private final EventLoopGroup group = new NioEventLoopGroup();
+    private EventLoopGroup group;
+
+    //private Bootstrap b = new Bootstrap();
     private Channel channel;
 
-    public ChannelFuture start(String host, int port,ChannelInboundHandlerAdapter clientHandler) throws Exception {
+    @Autowired
+    private SimpleChatClientInitializer simpleChatClientInitializer;
 
-        /**
-         * Netty用于接收客户端请求的线程池职责如下。
-         * （1）接收客户端TCP连接，初始化Channel参数；
-         * （2）将链路状态变更事件通知给ChannelPipeline
-         */
-        ChannelFuture f = null;
-        try {
-            Bootstrap b = new Bootstrap();
-            b.group(group)
-                    .channel(NioSocketChannel.class)
+    public void start(String host, int port,ChannelInboundHandlerAdapter clientHandler) throws Exception{
+        this.group = new NioEventLoopGroup();
+        Bootstrap b = new Bootstrap();
+        startEchoClient(b,host,port,clientHandler);
+            log.info("Netty client listening " + host + " on port " + port + " and ready for send");
+            log.info("Netty server handler name is "+clientHandler.getClass().getSimpleName());
+    }
+
+    public void startEchoClient(Bootstrap b,String host, int port,ChannelInboundHandlerAdapter clientHandler) throws Exception {
+        b.group(group)
+                .channel(NioSocketChannel.class)
                     .remoteAddress(new InetSocketAddress(host,port))
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
@@ -51,22 +61,23 @@ public class EchoClient {
                             //基于流的传输方法，平均拆分，累计缓冲的方式
                             //socketChannel.pipeline().addLast(new TimeDecoder(),clientHandler);
                         }
-                    });
-            //绑定端口
-            f = b.connect().sync();
-            channel = f.channel();
-            //f.channel().closeFuture().sync();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            if (f != null && f.isSuccess()) {
-                log.info("Netty client listening " + host + " on port " + port + " and ready for send");
-                log.info("Netty server handler name is "+clientHandler.getClass().getSimpleName());
-            } else {
-                log.error("Netty client start up Error!");
-            }
+                    })
+                .option(ChannelOption.SO_KEEPALIVE, true);
+        //绑定端口
+        this.channel = b.connect().sync().channel();
+    }
+
+    public ChannelFuture startSimpleChatClient(Bootstrap b,String host, int port) throws Exception {
+        b.group(group)
+                .channel(NioSocketChannel.class)
+                .handler(simpleChatClientInitializer);
+        //绑定端口
+        ChannelFuture f = b.connect(host,port).sync();
+        channel = f.channel();
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        while(true){
+            channel.writeAndFlush(in.readLine() + "\r\n");
         }
-        return f;
     }
 
     /**
@@ -74,8 +85,20 @@ public class EchoClient {
      */
     public void destroy() {
         log.info("Shutdown Netty Client...");
-        if(channel != null) { channel.close();}
-        group.shutdownGracefully();
+        if (this.channel != null && this.channel.isActive()) {
+            this.channel.close();        // if this.channel.isOpen()
+        }
+        if (this.group != null && !this.group.isShutdown()) {
+            this.group.shutdownGracefully();
+        }
         log.info("Shutdown Netty Client Success!");
+    }
+
+    /**
+     * 客户端主动发送给服务端
+     * @throws Exception
+     */
+    public void sendServerMsg() throws Exception{
+        this.channel.writeAndFlush(Unpooled.copiedBuffer("客户端主动发送消息", CharsetUtil.UTF_8)).sync();
     }
 }

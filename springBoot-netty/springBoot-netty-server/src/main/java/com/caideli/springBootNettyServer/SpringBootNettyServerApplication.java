@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.caideli.springBootNettyServer","com.caideli.springBootCommon"})
+@EnableConfigurationProperties
 public class SpringBootNettyServerApplication implements CommandLineRunner {
 
 	@Value("${netty.port}")
@@ -39,7 +41,7 @@ public class SpringBootNettyServerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		ChannelFuture future = echoServer.start(url,port,echoTimeServerHandler);
+		ChannelFuture future = echoServer.start(url,port,echoServerHandler);
 		Runtime.getRuntime().addShutdownHook(new Thread(){
 			@Override
 			public void run() {

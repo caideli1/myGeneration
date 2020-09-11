@@ -7,7 +7,9 @@ package com.caideli.springBootNettyServer.server;
  * 描述：
  */
 
+import com.caideli.springBootNettyServer.encoder.TimeEncoder;
 import com.caideli.springBootNettyServer.handler.EchoServerHandler;
+import com.caideli.springBootNettyServer.initializer.SimpleChatServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -44,7 +46,8 @@ public class EchoServer {
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
     private Channel channel;
 
-    //private ChannelInboundHandlerAdapter serverHandler;
+    @Autowired
+    private SimpleChatServerInitializer simpleChatServerInitializer;
     /**
      * 启动服务
      * @param hostname
@@ -52,25 +55,13 @@ public class EchoServer {
      * @return
      * @throws Exception
      */
-    public ChannelFuture start(String hostname, int port,ChannelInboundHandlerAdapter serverHandler) throws Exception {
+    public ChannelFuture start(String hostname, int port,ChannelInboundHandlerAdapter serverHandler) {
         //final EchoServerHandler echoServerHandler = new EchoServerHandler();
         ChannelFuture f = null;
         try {
             //ServerBootstrap负责初始化netty服务器，并且开始监听端口的socket请求
             ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .localAddress(new InetSocketAddress(hostname,port))
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel socketChannel) throws Exception {
-//                            为监听客户端read/write事件的Channel添加用户自定义的ChannelHandler
-                            socketChannel.pipeline().addLast(serverHandler);
-                        }
-                    });
-
-            f = b.bind().sync();
-            channel = f.channel();
+            f = startEchoChatServer(b,hostname,port,serverHandler);
             log.info("======EchoServer启动成功!!!=========");
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,6 +73,45 @@ public class EchoServer {
                 log.error("Netty server start up Error!");
             }
         }
+        return f;
+    }
+
+    public ChannelFuture startEchoChatServer(ServerBootstrap b,String hostname,int port,ChannelInboundHandlerAdapter serverHandler) throws Exception{
+        b.group(bossGroup, workerGroup)
+                .channel(NioServerSocketChannel.class)
+
+                .localAddress(new InetSocketAddress(hostname,port))
+                .childHandler(new ChannelInitializer<SocketChannel>() {
+                    @Override
+                    protected void initChannel(SocketChannel socketChannel) throws Exception {
+//                            为监听客户端read/write事件的Channel添加用户自定义的ChannelHandler
+                        socketChannel.pipeline().addLast(serverHandler);
+                        //加上解码器的方式
+                        //socketChannel.pipeline().addLast(new TimeEncoder(),serverHandler);
+                    }
+                })
+                .childOption(ChannelOption.SO_KEEPALIVE, true);;
+
+        ChannelFuture f = b.bind().sync();
+        channel = f.channel();
+        return f;
+    }
+
+    public ChannelFuture startSimpleChatServer(ServerBootstrap b,int port) throws Exception{
+        b.group(bossGroup, workerGroup)
+                .channel(NioServerSocketChannel.class) // (3)
+                .childHandler(new SimpleChatServerInitializer())  //(4)
+                .option(ChannelOption.SO_BACKLOG, 128)          // (5)
+                .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
+
+        System.out.println("SimpleChatServer 启动了");
+
+        // 绑定端口，开始接收进来的连接
+        ChannelFuture f = b.bind(port).sync(); // (7)
+
+        // 等待服务器  socket 关闭 。
+        // 在这个例子中，这不会发生，但你可以优雅地关闭你的服务器。
+        f.channel().closeFuture().sync();
         return f;
     }
 

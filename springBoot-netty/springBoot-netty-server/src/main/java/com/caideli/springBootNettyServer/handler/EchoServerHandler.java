@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.util.CharsetUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -16,6 +17,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * 描述：服务端自定义业务处理handler
  */
 @Component
+@Slf4j
+@ChannelHandler.Sharable
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     private static Map<String, Channel> channelMap = new ConcurrentHashMap<String, Channel>();
@@ -43,7 +46,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
      * 主动发送客户端
      */
     public void sendClientMsg(){
-        channelMap.get("我是client端发送消息过来了!").writeAndFlush("我主动调用你了！");
+        channelMap.get("我是client端发送消息过来了!").writeAndFlush(Unpooled.copiedBuffer("server端主动发送消息!", CharsetUtil.UTF_8));
     }
 
 
