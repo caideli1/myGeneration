@@ -1,0 +1,130 @@
+server:
+  port: 8885
+spring:
+  application:
+    name: springBoot-sharding
+
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: ds0,ds1
+      ds0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/ds0?characterEncoding=UTF-8&serverTimezone=CTT
+        username: root
+        password: 123456
+        type: com.zaxxer.hikari.HikariDataSource
+        hikari:
+          minimum-idle: 5
+          maximum-pool-size: 15
+          auto-commit: true
+          idle-timeout: 30000
+          pool-name: DatebookHikariCP
+          max-lifetime: 1800000
+          connection-timeout: 30000
+      ds1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/ds1?characterEncoding=UTF-8&serverTimezone=CTT
+        username: root
+        password: 123456
+        type: com.zaxxer.hikari.HikariDataSource
+        hikari:
+          minimum-idle: 5
+          maximum-pool-size: 15
+          auto-commit: true
+          idle-timeout: 30000
+          pool-name: DatebookHikariCP
+          max-lifetime: 1800000
+          connection-timeout: 30000
+    sharding:
+      # 默认数据库
+      default-data-source-name: ds0
+      tables:
+        # 单个表配置
+        t_test_order_record:
+          logic-table: t_test_order_record # 逻辑表
+          actual-data-nodes: ds$->{0..1}.t_test_order_record_$->{0..1} # 真实表
+          # 分表策略
+          table-strategy:
+            complex: # 复合分片
+              sharding-columns: order_id,user_id # 分片键
+              # 复合分片策略
+              algorithm-class-name: com.cdl.sharding.table.config.OrderRecordComplexShardingStrategy
+        t_test_user_amount:
+          logic-table: t_test_user_amount
+          actual-data-nodes: ds$->{0..1}.t_test_user_amount_$->{0..3}
+          databaseStrategy:
+            inline:
+              shardingColumn: user_id
+              algorithmExpression: ds$->{user_id % 2}
+          table-strategy:
+            # 表达式分片策略
+            inline:
+              algorithm-expression: t_test_user_amount_$->{user_id % 4} #分片算法表达式
+              sharding-column: user_id
+  #        t_test_user_bill:
+  #          logic-table: t_test_user_bill
+  #          actual-data-nodes: ds0.t_test_user_bill_$->{0..3}
+  #          table-strategy:
+  #            inline:
+  #              algorithm-expression: t_test_user_bill_$->{user_id % 8}
+  #              sharding-column: user_id
+        t_test_order_month:
+          logic-table: t_test_order_month
+          actual-data-nodes: ds0.t_test_order_month_$->{0..11}
+          table-strategy:
+            #标准分片
+            standard:
+              sharding-column: forward_date
+              # 精准分片算法
+              precise-algorithm-class-name: com.cdl.sharding.table.config.OrderMonthPreciseShardingStrategy
+  #        t_test_business_flow:
+  #          logic-table: t_test_business_flow
+  #          actual-data-nodes: ds0.t_test_business_flow_$->{0..7}
+  #          table-strategy:
+  #            #标准分片
+  #            standard:
+  #              sharding-column: business_no
+  #              # 精准分片算法
+  #              precise-algorithm-class-name: com.enmonster.optimon.cfs.strategy.BusinessFlowPreciseShardingStrategy
+
+
+  main:
+    allow-bean-definition-overriding: true
+
+mybatis-plus:
+  mapper-locations: classpath:com.cdl.sharding.table.mapper/*.xml
+  configuration:
+    jdbc-type-for-null: 'null'
+
+## mybatis
+#mybatis:
+#  mapper-locations: classpath:com.cdl.sharding.table.mapper/*.xml #classpath:/mapper/*.xml
+#  type-aliases-package: com.cdl.sharding.table.model
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    use-generated-keys: true
+#
+## tkmapper
+#mapper:
+#  mappers:
+#    - tk.mybatis.mapper.common.Mapper
+#  identity: MYSQL
+#  style: normal
+
+ #pageHelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: false
+  row-bounds-with-count: true
+  support-methods-arguments: true
+
+logging:
+  level:
+    root: info
+    com.cdl.sharding.table.mapper: debug
+  file: logs/${spring.application.name}.log
+
+
