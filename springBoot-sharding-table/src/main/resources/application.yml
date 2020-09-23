@@ -94,25 +94,25 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-mybatis-plus:
-  mapper-locations: classpath:com.cdl.sharding.table.mapper/*.xml
-  configuration:
-    jdbc-type-for-null: 'null'
-
-## mybatis
-#mybatis:
-#  mapper-locations: classpath:com.cdl.sharding.table.mapper/*.xml #classpath:/mapper/*.xml
-#  type-aliases-package: com.cdl.sharding.table.model
+#mybatis-plus:
+#  mapper-locations: classpath:com.cdl.sharding.table.mapper/*.xml
 #  configuration:
-#    map-underscore-to-camel-case: true
-#    use-generated-keys: true
-#
-## tkmapper
-#mapper:
-#  mappers:
-#    - tk.mybatis.mapper.common.Mapper
-#  identity: MYSQL
-#  style: normal
+#    jdbc-type-for-null: 'null'
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:com.cdl.sharding.table.mapper/*.xml #classpath:/mapper/*.xml
+  type-aliases-package: com.cdl.sharding.table.model
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+
+# tkmapper
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  identity: MYSQL
+  style: normal
 
  #pageHelper
 pagehelper:

@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -18,14 +20,17 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="t_test_order_month")
 public class TTestOrderMonth {
     /**
      * 提前时间
      */
+    @Column(name = "forward_date")
     private LocalDate forwardDate;
 
     /**
      * 创建时间
      */
+    @Column(name = "create_time")
     private Date createTime;
 }

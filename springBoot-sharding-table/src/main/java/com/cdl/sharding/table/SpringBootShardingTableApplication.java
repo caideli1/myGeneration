@@ -1,9 +1,9 @@
 package com.cdl.sharding.table;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication//(scanBasePackages = {"com.cdl.sharding.table.config"})
 @MapperScan(basePackages = {"com.cdl.sharding.table.mapper"})

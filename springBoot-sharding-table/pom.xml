@@ -61,14 +61,12 @@
 			<version>2.1.4.RELEASE</version>
         </dependency>
 		- - >
-
-		<!- - java8-stream -->
+		<!- - java8-stream 工具。。。。。。。。。。。。。 -->
 		<dependency>
 			<groupId>one.util</groupId>
 			<artifactId>streamex</artifactId>
 			<version>0.7.0</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -94,9 +92,12 @@
 			<version>${commons-collections.version}</version>
 		</dependency>
 
+
+		<!--数据库。。。。。。。。。。。。。。。。。。。。。。 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.17</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -140,12 +141,12 @@
 
 		<!-- 第三方及其他依赖 -->
 		<!-- mybatis type handlers -->
-		<!--<dependency>
+		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-typehandlers-jsr310</artifactId>
 			<version>${mybatis.typehandlers.version}</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>2.9.2</version>
