@@ -1,0 +1,37 @@
+#Sharding-JDBC分片策略
+spring:
+  main:
+    #允许一个实体类对应两张表
+    allow-bean-definition-overriding: true
+  shardingsphere:
+    datasource:
+      #配置数据源
+      names: m1
+      m1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://local:3306/course_db?serverTimezone=GMT%2B8
+        username: root
+        password: 123456
+    sharding:
+      tables:
+        course:
+          #指定course表分布情况，配置表在哪个数据库里面，表名称都是什么
+          actual-data-nodes: m1.course_$->{1..2}
+          #指定course表里面主键cid和生成策略：SNOWFLAKE
+          key-generator:
+            column: cid
+            type: SNOWFLAKE
+          #指定分片策略
+          table-strategy:
+            inline:
+              shardingcolumn: cid
+              algorithm-expression: course_$->{cid%2+1}
+    props:
+      sql:
+        show: true
+
+#配置mybatis-plus驼峰
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true

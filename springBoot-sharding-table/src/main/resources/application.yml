@@ -124,7 +124,7 @@ pagehelper:
 logging:
   level:
     root: info
-    com.cdl.sharding.table.mapper: debug
+    com.cdl.sharding.table: debug
   file: logs/${spring.application.name}.log
 
 
