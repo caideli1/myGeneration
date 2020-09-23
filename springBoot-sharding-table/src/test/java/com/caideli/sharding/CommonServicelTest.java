@@ -10,11 +10,14 @@ package com.caideli.sharding;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.cdl.sharding.table.SpringBootShardingTableApplication;
+import com.cdl.sharding.table.base.PageHelpUtil;
 import com.cdl.sharding.table.mapper.TTestOrderMonthMapper;
 import com.cdl.sharding.table.mapper.TTestOrderRecordMapper;
 import com.cdl.sharding.table.mapper.TTestUserAmountMapper;
 import com.cdl.sharding.table.model.TTestOrderMonth;
 import com.cdl.sharding.table.model.TTestUserAmount;
+import com.cdl.sharding.table.service.TestService;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shardingsphere.shardingjdbc.jdbc.core.datasource.ShardingDataSource;
 import org.junit.Before;
@@ -69,6 +72,9 @@ public class CommonServicelTest {
     TTestOrderRecordMapper tTestOrderRecordMapper;
 
     @Resource
+    TestService testService;
+
+    @Resource
     Map<String, DataSource> dataSourceMap;
 
     @Resource
@@ -99,11 +105,20 @@ public class CommonServicelTest {
     }
 
     /**
-     * 多库查询测试，使用
+     * 多库多表查询测试，实体只能对应好数据库表字段，驼峰自动转换有问题
      */
     @Test
     public void mapperSelectTest() {
         List<TTestUserAmount> tTestUserAmountList = tTestUserAmountMapper.selectAll();
         System.out.println(JSONArray.toJSONString(tTestUserAmountList));
+    }
+
+    /**
+     * 分页查询
+     */
+    @Test
+    public void mapperSelectPageTest() {
+        PageInfo<TTestUserAmount> pageInfo = testService.getTTestUserAmountPage(2,1);
+        System.out.println("数据：\n" + JSONArray.toJSONString(pageInfo));
     }
 }

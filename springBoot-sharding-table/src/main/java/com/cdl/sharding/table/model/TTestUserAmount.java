@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -17,15 +19,18 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="t_test_user_amount")
 public class TTestUserAmount {
 
     /**
      * 用户id
      */
+    @Column(name = "user_id")
     private Long userId;
 
     /**
      * 创建时间
      */
+    @Column(name = "create_time")
     private Date createTime;
 }

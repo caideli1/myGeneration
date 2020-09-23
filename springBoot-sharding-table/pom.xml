@@ -120,31 +120,31 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<!-- 不排除这个包的话，xml文件加载不了 -->
-			<exclusions>
+			<!--<exclusions>
 				<exclusion>
 					<groupId>org.mybatis.spring.boot</groupId>
 					<artifactId>mybatis-spring-boot-starter</artifactId>
 				</exclusion>
-				<!--<exclusion>
+				&lt;!&ndash;<exclusion>
 					<groupId>org.mybatis</groupId>
 					<artifactId>mybatis</artifactId>
-				</exclusion>-->
-			</exclusions>
+				</exclusion>&ndash;&gt;
+			</exclusions>-->
 			<version>${pagehelper-spring-boot-starter.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
-			<exclusions>
+			<!--<exclusions>
 				<exclusion>
 					<groupId>org.mybatis.spring.boot</groupId>
 					<artifactId>mybatis-spring-boot-starter</artifactId>
 				</exclusion>
-				<!--<exclusion>
+				&lt;!&ndash;<exclusion>
 					<groupId>org.mybatis</groupId>
 					<artifactId>mybatis</artifactId>
-				</exclusion>-->
-			</exclusions>
+				</exclusion>&ndash;&gt;
+			</exclusions>-->
 			<version>${pagehelper.version}</version>
 		</dependency>
 

@@ -19,7 +19,7 @@ import java.util.Map;
  * @Date : 2020/9/23 0023 15:02
  * 描述：解決多数据源驼峰不匹配问题
  */
-@Configuration
+//@Configuration
 public class MybatisConfig {
 
     /*@Qualifier("shardingDataSource")
