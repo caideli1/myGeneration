@@ -1,0 +1,16 @@
+server:
+  port: 5052
+
+
+dubbo:
+  application:
+    name: sea-provider-log
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 20552
+  version: 1.0.1
+  scan:
+    base-packages: com.log

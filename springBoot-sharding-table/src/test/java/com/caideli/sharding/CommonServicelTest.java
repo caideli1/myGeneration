@@ -38,6 +38,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SpringBootShardingTableApplication.class)
@@ -120,5 +122,8 @@ public class CommonServicelTest {
     public void mapperSelectPageTest() {
         PageInfo<TTestUserAmount> pageInfo = testService.getTTestUserAmountPage(2,1);
         System.out.println("数据：\n" + JSONArray.toJSONString(pageInfo));
+        Lock lock = new ReentrantLock();
+        lock.lock();
+        lock.tryLock();
     }
 }

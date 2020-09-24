@@ -1,0 +1,18 @@
+server:
+  port: 5051
+
+
+dubbo:
+  application:
+    name: sea-consumer-web
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 20551
+  version: 1.0.0
+  scan:
+    base-packages: com.web
+  consumer:
+    timeout: 5000
