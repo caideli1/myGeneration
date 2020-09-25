@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @Author : caideli
@@ -21,10 +22,15 @@ public class OrderRecordComplexShardingStrategy implements ComplexKeysShardingAl
     public Collection<String> doSharding(Collection<String> availableTargetNames, ComplexKeysShardingValue<Long> complexKeysShardingValue) {
         Integer size = availableTargetNames.size();
         // 获取表
-        return getTables(complexKeysShardingValue, size);
+        return getTablesOne(complexKeysShardingValue, size);
     }
 
-
+    /**
+     * 返回多个，就会插入多条
+     * @param complexKeysShardingValue
+     * @param size
+     * @return
+     */
     private Set<String> getTables(ComplexKeysShardingValue<Long> complexKeysShardingValue, Integer size) {
         Set<String> tables = new HashSet<>();
         // 分页条件 , 包含了多个分片键的值
@@ -33,10 +39,33 @@ public class OrderRecordComplexShardingStrategy implements ComplexKeysShardingAl
             // 获取Value
             v.forEach(value -> {
                 //tables.add(TableUtils.getTable(complexKeysShardingValue.getLogicTableName(), String.valueOf(value % size)));
-                tables.add(complexKeysShardingValue.getLogicTableName()+ (value % size));
+                tables.add(complexKeysShardingValue.getLogicTableName()+"_"+ (value % size));
             });
 
         });
+        return tables;
+    }
+
+    /**
+     * 返回一个，插入一条
+     * @param complexKeysShardingValue
+     * @param size
+     * @return
+     */
+    private Set<String> getTablesOne(ComplexKeysShardingValue<Long> complexKeysShardingValue, Integer size) {
+        Set<String> tables = new HashSet<>();
+        // 分页条件 , 包含了多个分片键的值
+        Map<String, Collection<Long>> map = complexKeysShardingValue.getColumnNameAndShardingValuesMap();
+        AtomicReference<Long> sum= new AtomicReference<>(0L);
+
+        map.forEach((k, v) -> {
+            // 获取Value
+            v.forEach(value -> {
+                sum.set(sum.get() + value);
+            });
+
+        });
+        tables.add(complexKeysShardingValue.getLogicTableName()+"_"+ (sum.get() % size));
         return tables;
     }
 }

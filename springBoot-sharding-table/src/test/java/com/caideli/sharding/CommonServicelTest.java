@@ -15,6 +15,7 @@ import com.cdl.sharding.table.mapper.TTestOrderMonthMapper;
 import com.cdl.sharding.table.mapper.TTestOrderRecordMapper;
 import com.cdl.sharding.table.mapper.TTestUserAmountMapper;
 import com.cdl.sharding.table.model.TTestOrderMonth;
+import com.cdl.sharding.table.model.TTestOrderRecord;
 import com.cdl.sharding.table.model.TTestUserAmount;
 import com.cdl.sharding.table.service.TestService;
 import com.github.pagehelper.PageInfo;
@@ -107,6 +108,20 @@ public class CommonServicelTest {
     }
 
     /**
+     * 复合分片算法测试
+     * 会每个字段都算一遍算法，
+     */
+    @Test
+    public void mapperSaveComplexStandTest() {
+        TTestOrderRecord tTestOrderRecord = TTestOrderRecord.builder()
+                .orderId(3L)
+                .userId(4L)
+                .createTime(new Date())
+                .build();
+        tTestOrderRecordMapper.insertSelective(tTestOrderRecord);
+    }
+
+    /**
      * 多库多表查询测试，实体只能对应好数据库表字段，驼峰自动转换有问题
      */
     @Test
@@ -122,8 +137,10 @@ public class CommonServicelTest {
     public void mapperSelectPageTest() {
         PageInfo<TTestUserAmount> pageInfo = testService.getTTestUserAmountPage(2,1);
         System.out.println("数据：\n" + JSONArray.toJSONString(pageInfo));
-        Lock lock = new ReentrantLock();
+        /*Lock lock = new ReentrantLock();
         lock.lock();
-        lock.tryLock();
+        lock.tryLock();*/
     }
+
+
 }

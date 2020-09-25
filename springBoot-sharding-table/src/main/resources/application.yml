@@ -45,7 +45,7 @@ spring:
         # 单个表配置
         t_test_order_record:
           logic-table: t_test_order_record # 逻辑表
-          actual-data-nodes: ds$->{0..1}.t_test_order_record_$->{0..1} # 真实表
+          actual-data-nodes: ds0.t_test_order_record_$->{0..1} # 真实表
           # 分表策略
           table-strategy:
             complex: # 复合分片
