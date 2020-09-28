@@ -8,7 +8,7 @@ import java.util.concurrent.Semaphore;
  * @Author : caideli
  * @Email : 1595252552@qq.com
  * @Date : 2020/7/19 0019 13:32
- * 描述：
+ * 描述：信号量实例
  */
 public class SemapDemo implements Runnable{
     //指定最大许可数5,并且是公平锁
@@ -22,7 +22,7 @@ public class SemapDemo implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally{
-            sema.release();
+            //sema.release();
         }
     }
     public static void main(String[] args) {
@@ -31,6 +31,16 @@ public class SemapDemo implements Runnable{
         SemapDemo fd=new SemapDemo();
         for(int i=0;i<10;i++){
             exec.submit(fd);
+            if (i>7){
+                //sema.release();
+                try {
+                    System.out.println("一会再释放");
+                    Thread.sleep(3000);
+                    sema.release(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         exec.shutdown();
