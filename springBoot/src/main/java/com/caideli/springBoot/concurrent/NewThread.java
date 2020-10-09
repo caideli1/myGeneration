@@ -1,7 +1,6 @@
 package com.caideli.springBoot.concurrent;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 /**
  * @Author : caideli
@@ -33,5 +32,8 @@ public class NewThread {
         FutureTask futureTask = new FutureTask(new UserCall());
         new Thread(futureTask).start();
         System.out.println(futureTask.get());
+
+        //ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+
     }
 }
