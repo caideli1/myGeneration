@@ -21,7 +21,7 @@
 		<java.version>1.8</java.version>
 		<spring-boot-admin.version>2.1.5</spring-boot-admin.version>
         <fastjson.version>1.2.58</fastjson.version>
-        <guava.version>27.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <commons-collections.version>4.3</commons-collections.version>
 	</properties>
 
