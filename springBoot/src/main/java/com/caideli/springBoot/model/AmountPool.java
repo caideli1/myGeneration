@@ -41,6 +41,8 @@ public class AmountPool implements Serializable {
      */
     private Integer status;
 
+    private String img;
+
     /**
      * 创建时间
      */
