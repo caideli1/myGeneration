@@ -52,4 +52,11 @@ public class AmountPoolController {
         }
         return JsonResult.ok();
     }
+
+    // http://127.0.0.1:8881/amountPool/getList
+    @RequestMapping("/amountPool/getList")
+    public JsonResult getList() {
+
+        return JsonResult.ok(amountPoolService.selectAll());
+    }
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -46,7 +48,11 @@ public class TestController {
     }
 
 
-
+    public static void main(String[] args) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String startDate = "2020-08-01 05:22:11";
+        System.out.println(sdf.format(startDate));
+    }
 
 
 }

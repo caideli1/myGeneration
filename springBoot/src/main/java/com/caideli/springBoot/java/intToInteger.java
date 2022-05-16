@@ -1,6 +1,8 @@
 package com.caideli.springBoot.java;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,7 +40,14 @@ public class intToInteger {
         System.out.println(map.get(1));
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         diffInter();
+    }*/
+    public static void main(String[] args) {
+        List<Integer> list= Collections.emptyList();
+        for (Integer i:list){
+
+        }
+        System.out.printf("12345234534");
     }
 }
