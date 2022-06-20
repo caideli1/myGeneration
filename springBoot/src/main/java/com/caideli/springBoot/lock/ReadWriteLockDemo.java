@@ -48,6 +48,7 @@ public class ReadWriteLockDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        lock.lock();
         final ReadWriteLockDemo demo=new ReadWriteLockDemo();
         Runnable readRunnable=new Runnable(){
             @Override
